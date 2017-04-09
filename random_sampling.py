@@ -91,20 +91,24 @@ def arePurchaseAndAgeGroupIndependent(ageGroups, probDiff = 0.01):
     pass
 
 def saveDataPlot(nofp, probOfPurchase, dpflag):
-    ## your code
-#    fig1 = plt.figure(1)
-#    fig1.suptitle('Purchase Probabilities per Age Group; Sample Size =',nofp)
-    #plt.xlim([num_nodes_start,num_nodes_end])
-    #plt.bar(x, y, barwidth)
-
-    y = [0, .2, .4, .6, .8, 1]
-    width = 1/1.5
+    y = []
+    for x in ageGroups:
+	y.append(probOfPurchaseGivenAgeGroup(x))
+    width = 5
+    title = 'Purchase Probabilities per Age Group; Sample Size ='+str(nofp)
+    plt.title(title)
+    plt.ylabel('Probability of Purchase')
+    plt.xlabel('Age Group')
     plt.bar(ageGroups, y, width, color="blue")
     fig = plt.gcf()
+    plt.plot([10, 80],[probOfPurchase, probOfPurchase], color="red")
+    plt.yticks(np.arange( 0, 1.2, .2))
+
     if dpflag == True:
-        plt.savefig(nofp,"_dep.png")
+        filePat = str(nofp)+"_dep.png"
     else:
-        plt.savefig(nofp,"_ind.png")
+	filePat = str(nofp)+"_ind.png"
+    plt.savefig(filePat)
     pass
 
     
