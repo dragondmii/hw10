@@ -81,13 +81,13 @@ def condProbOfPurchaseGivenAgeGroup(x):
 def arePurchaseAndAgeGroupIndependent(ageGroups, probDiff = 0.01):
     ## your code
     for x in ageGroups:
-        diffProbs = abs(condProbOfPurchaseGivenAgeGroup(ageGroups[x]) - probOfPurchase())
-        if (diffProbs > probDiff):
-            print "Purchase and AgeGroup=",ageGroups[x]," are independent"
-            print "P(Purchase)=",probOfPurchase(),"; P(Purchase|AgeGroup=",ageGroups[x],")=",condProbOfPurchaseGivenAgeGroup(ageGroups[x])
+        diffProbs = abs(condProbOfPurchaseGivenAgeGroup(x) - probOfPurchase())
+        if (diffProbs < probDiff):
+            print "Purchase and AgeGroup=",x," are independent"
+            print "P(Purchase)=",probOfPurchase(),"; P(Purchase|AgeGroup=",x,")=",condProbOfPurchaseGivenAgeGroup(x)
         else:
-            print "Purchase and AgeGroup=",ageGroups[x]," are dependent"
-            print "P(Purchase)=",probOfPurchase(),"; P(Purchase|AgeGroup=",ageGroups[x],")=",condProbOfPurchaseGivenAgeGroup(ageGroups[x])
+            print "Purchase and AgeGroup=",x," are dependent"
+            print "P(Purchase)=",probOfPurchase(),"; P(Purchase|AgeGroup=",x,")=",condProbOfPurchaseGivenAgeGroup(x)
     pass
 
 def saveDataPlot(nofp, probOfPurchase, dpflag):
