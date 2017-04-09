@@ -81,6 +81,7 @@ def condProbOfPurchaseGivenAgeGroup(x):
 def arePurchaseAndAgeGroupIndependent(ageGroups, probDiff = 0.01):
     ## your code
     for x in ageGroups:
+        print x
         diffProbs = abs(condProbOfPurchaseGivenAgeGroup(ageGroups[x]) - probOfPurchase())
         if (diffProbs > probDiff):
             print "Purchase and AgeGroup=",ageGroups[x]," are independent"
@@ -92,7 +93,19 @@ def arePurchaseAndAgeGroupIndependent(ageGroups, probDiff = 0.01):
 
 def saveDataPlot(nofp, probOfPurchase, dpflag):
     ## your code
+    #fig1 = plt.figure(1)
+    #fig1.suptitle('Purchase Probabilities per Age Group; Sample Size =',nofp)
+    #plt.xlim([num_nodes_start,num_nodes_end])
+    #plt.bar(x, y, barwidth)
+
+    y = [0, .2, .4, .6, .8, 1]
+    x = agegroups
+    width = .2
+    plt.bar(ageGroups, y, width)
     pass
+
+    
+    
   
 def runExperiment(ageGroups, nofp=1000, dependent=True,
                   probOfPurchase=0.4, probDiff=0.1):
