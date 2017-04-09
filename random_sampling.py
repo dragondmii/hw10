@@ -29,7 +29,7 @@ def generateAgeDependentSpendingData(nofp):
     global numOfPurchases, ageGroups, numOfPeople
     numOfPeople = nofp
     numOfPurchases = 0
-    resetTables()
+    #resetTables()
     for _ in xrange(numOfPeople):
         ## randomly choose an age group
         ageGroup = random.choice(ageGroups)
@@ -46,7 +46,7 @@ def generateAgeIndependentSpendingData(nofp, probOfPurchase=0.4):
     global numOfPurchases, ageGroups, numOfPeople
     numOfPeople = nofp
     numOfPurchases = 0
-    resetTables()
+    #resetTables()
     for _ in xrange(numOfPeople):
         ## randomly choose an age group
         ageGroup = random.choice(ageGroups)
