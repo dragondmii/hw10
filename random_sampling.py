@@ -92,15 +92,15 @@ def arePurchaseAndAgeGroupIndependent(ageGroups, probDiff = 0.01):
 
 def saveDataPlot(nofp, probOfPurchase, dpflag):
     ## your code
-    fig1 = plt.figure(1)
-    fig1.suptitle('Purchase Probabilities per Age Group; Sample Size =',nofp)
+#    fig1 = plt.figure(1)
+#    fig1.suptitle('Purchase Probabilities per Age Group; Sample Size =',nofp)
     #plt.xlim([num_nodes_start,num_nodes_end])
     #plt.bar(x, y, barwidth)
 
     y = [0, .2, .4, .6, .8, 1]
-    x = agegroups
-    width = .2
-    plt.bar(ageGroups, y, width)
+    width = 1/1.5
+    plt.bar(ageGroups, y, width, color="blue")
+    fig = plt.gcf()
     if dpflag == True:
         plt.savefig(nofp,"_dep.png")
     else:
