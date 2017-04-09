@@ -102,7 +102,10 @@ def saveDataPlot(nofp, probOfPurchase, dpflag):
     x = agegroups
     width = .2
     plt.bar(ageGroups, y, width)
-    plt.showim(fig1)
+    if dpflag == True:
+        plt.savefig(nofp,"_dep.png")
+    else:
+        plt.savefig(nofp,"_ind.png")
     pass
 
     
