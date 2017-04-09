@@ -3,8 +3,8 @@
 ###############################
 # module: random_sampling.py
 # description: Starter code for CS3430 HW10
-# Your Name
-# Your A-Number
+# Robert Epstein
+# A01092594
 ###############################
 
 import numpy as np
@@ -43,7 +43,19 @@ def generateAgeDependentSpendingData(nofp):
             purchasesInAgeGroup[ageGroup] += 1
 
 def generateAgeIndependentSpendingData(nofp, probOfPurchase=0.4):
-    ## your code
+    global numOfPurchases, ageGroups, numOfPeople
+    numOfPeople = nofp
+    numOfPurchases = 0
+    resetTables()
+    for _ in xrange(numOfPeople):
+        ## randomly choose an age group
+        ageGroup = random.choice(ageGroups)
+        ## modify the number of people in ageGroup
+        peopleInAgeGroup[ageGroup] += 1
+        ## if the purchase probability > random
+        if (random.random() < probOfPurchase):
+            numOfPurchases += 1
+            purchasesInAgeGroup[ageGroup] += 1
     pass
 
 ## P(Purchase | AgeGroup = x)
@@ -68,6 +80,14 @@ def condProbOfPurchaseGivenAgeGroup(x):
 
 def arePurchaseAndAgeGroupIndependent(ageGroups, probDiff = 0.01):
     ## your code
+    for x in ageGroups:
+        diffProbs = abs(condProbOfPurchaseGivenAgeGroup(ageGroups[x]) - probOfPurchase())
+        if (diffProbs > probDiff):
+            print "Purchase and AgeGroup=",ageGroups[x]," are independent"
+            print "P(Purchase)=",probOfPurchase(),"; P(Purchase|AgeGroup=",ageGroups[x],")=",condProbOfPurchaseGivenAgeGroup(ageGroups[x])
+        else:
+            print "Purchase and AgeGroup=",ageGroups[x]," are dependent"
+            print "P(Purchase)=",probOfPurchase(),"; P(Purchase|AgeGroup=",ageGroups[x],")=",condProbOfPurchaseGivenAgeGroup(ageGroups[x])
     pass
 
 def saveDataPlot(nofp, probOfPurchase, dpflag):
